@@ -1,6 +1,8 @@
 #!/bin/bash
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+apt-get update
+
 source "$dir/vm1.config"
 modprobe 8021q
 #Down
@@ -10,6 +12,7 @@ ifdown $EXTERNAL_IF
 
 #Configure VLAN and Internal interface
 
+apt-get install vlan -y
 echo "
 # Available interfaces
 source /etc/network/interfaces.d/*
